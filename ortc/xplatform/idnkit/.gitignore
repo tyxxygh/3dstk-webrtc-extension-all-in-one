@@ -1,0 +1,11 @@
+xcuserdata
+projects/android/libs
+projects/android/obj
+[Dd]ebug/
+[Rr]elease/
+*.opensdf
+*.sdf
+
+#codelite
+projects/linux/codelite/idnkit/*.mk
+projects/linux/codelite/idnkit/*.txt

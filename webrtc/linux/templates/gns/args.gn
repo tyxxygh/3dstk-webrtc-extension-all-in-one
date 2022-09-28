@@ -1,0 +1,20 @@
+# Build arguments go here.
+# See "gn args <out_dir> --list" for available build arguments.
+
+target_os="-target_os-"
+target_cpu="-target_cpu-"
+is_debug=-is_debug-
+rtc_include_tests=false
+
+# Build args which "COPY FROM" Windows config args to enable hw-h264 in linux.
+rtc_use_h264=true 
+ffmpeg_branding="Chrome" 
+use_openh264=true
+libyuv_include_tests=false 
+build_libsrtp_tests=false 
+rtc_initialize_ffmpeg=true
+is_clang=false
+clang_use_chrome_plugins=false
+treat_warnings_as_errors=false
+use_custom_libcxx=false
+use_rtti=true

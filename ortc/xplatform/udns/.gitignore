@@ -1,0 +1,13 @@
+*.xcscheme
+xcuserdata
+[Dd]ebug/
+[Rr]elease
+*.sdf
+*.opensdf
+*.db
+*.opendb
+.vs/
+
+# codelite
+projects/linux/codelite/udns/*.mk
+projects/linux/codelite/udns/*.txt

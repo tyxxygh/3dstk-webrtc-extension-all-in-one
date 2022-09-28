@@ -1,0 +1,197 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//ortc/zsLib/zslib_sources.gni")
+
+config("zslib_eventing_config") {
+    if  (is_win) {
+      cflags_cc = [ 
+        "/WX-",
+        "/wd4068",
+        "/wd4290",
+      ]
+      if (!is_winuwp)
+      {
+        cflags_cc += ["/EHsc"]
+      }
+    } else {
+      cflags_cc = [ 
+        "-std=c++11",
+        "-g",
+        "-Wall",
+        "-Wno-unknown-pragmas",
+        "-Wno-documentation",
+        "-Wno-unused-local-typedefs",
+        "-Wno-pragmas",
+      ]
+
+    }
+  
+    include_dirs = [ 
+      "../../third_party",
+      ".",
+      "..",
+      "../zsLib",
+      "../zsLib/zsLib/extras",
+    ]
+  }
+  
+zslib_eventing_sources = [
+    "zsLib/eventing/eventing.h",
+    "zsLib/eventing/IEventingTypes.h",
+    "zsLib/eventing/IHasher.h",
+    "zsLib/eventing/IHelper.h",
+    "zsLib/eventing/IIDLTypes.h",
+    "zsLib/eventing/IRemoteEventing.h",
+    "zsLib/eventing/types.h",
+    "zsLib/eventing/cpp/zsLib_eventing.cpp",
+    "zsLib/eventing/cpp/zsLib_eventing_EventingTypes.cpp",
+    "zsLib/eventing/cpp/zsLib_eventing_Hasher.cpp",
+    "zsLib/eventing/cpp/zsLib_eventing_Helper.cpp",
+    "zsLib/eventing/cpp/zsLib_eventing_IDLTypes.cpp",
+    "zsLib/eventing/cpp/zsLib_eventing_RemoteEventing.cpp",
+    "zsLib/eventing/internal/types.h",
+    "zsLib/eventing/internal/zsLib_eventing_EventingTypes.h",
+    "zsLib/eventing/internal/zsLib_eventing_Hasher.h",
+    "zsLib/eventing/internal/zsLib_eventing_Helper.h",
+    "zsLib/eventing/internal/zsLib_eventing_IDLTypes.h",
+    "zsLib/eventing/internal/zsLib_eventing_RemoteEventing.h",
+  ]
+  
+zslib_eventing_tool_sources = [
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_CommandLine.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_Monitor.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_EventingCompiler.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateHelper.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateJson.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructCx.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructHeader.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructImpHeader.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructImplCpp.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateTypesHeader.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructC.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructDotNet.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_GenerateStructPython.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_Helper.cpp",
+    "zsLib/eventing/tool/cpp/zsLib_eventing_tool_IDLCompiler.cpp",
+    "zsLib/eventing/tool/internal/types.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_CommandLine.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_Monitor.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_EventingCompiler.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateHelper.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateJson.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructCx.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructHeader.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructImplCpp.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructImplHeader.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructC.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructDotNet.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateStructPython.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_GenerateTypesHeader.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_Helper.h",
+    "zsLib/eventing/tool/internal/zsLib_eventing_tool_IDLCompiler.h",
+    "zsLib/eventing/tool/ICommandLine.h",
+    "zsLib/eventing/tool/ICompiler.h",
+    "zsLib/eventing/tool/OutputStream.h",
+    "zsLib/eventing/tool/tool.h",
+    "zsLib/eventing/tool/types.h",
+]
+
+
+ if (host_toolchain == current_toolchain) {
+  executable("zslib-eventing-tool-compiler") {
+
+      
+      configs += [ ":zslib_eventing_config" ]
+      configs -= [ "//build/config/compiler:chromium_code" ]
+      configs -= [ "//build/config/compiler:no_rtti" ]
+      
+      if (!is_win) {
+        configs -= [ "//build/config/gcc:no_exceptions" ]
+      }
+      sources = zslib_sources
+      sources += zslib_eventing_sources
+      sources += zslib_eventing_tool_sources
+      sources += [    
+        "projects/msvc/zsLib.Eventing.Tool.Compiler.Win32/main.cpp",
+        "projects/linux/codelite/zsLib-eventing-tool-compiler/main.cpp",
+      ]
+
+      deps = [
+        "//third_party/cryptopp",
+        #"//third_party/winuwp_compat:wrap_main_utf8_cc",
+        # Default manifest on Windows (a no-op elsewhere).
+        "//build/win:default_exe_manifest",
+      ]
+      
+      if (is_linux) {
+        deps += [
+          "//buildtools/third_party/libc++",
+      ]
+        lib_dirs = [ "/usr/lib/x86_64-linux-gnu/" ]
+        libs = [ "uuid" ]
+      }
+
+      if (!is_win) {
+      sources -= [
+          "zsLib/eventing/IIDLTypes.h",
+          "../zsLib/zsLib/eventing/internal/zsLib_eventing_EventTypes.h",
+          "../zsLib/zsLib/eventing/internal/zsLib_eventing_Log.h",
+          "../zsLib/zsLib/internal/zsLib.events_win_etw.h",
+          "projects/msvc/zsLib.Eventing.Tool.Compiler.Win32/main.cpp",
+        ]
+      }
+      defines = [
+        "ZSLIB_EVENTING_NOOP",
+        "_UNICODE",
+        "UNICODE",
+      ]
+    }
+ }
+
+static_library("zslib-eventing") {
+
+  configs += [ ":zslib_eventing_config" ]
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs -= [ "//build/config/compiler:no_rtti" ]
+  
+  if (!is_win) {
+    configs -= [ "//build/config/gcc:no_exceptions" ]
+  }
+  
+  sources = zslib_eventing_sources
+
+  defines = [
+    "_LIB",
+  ]
+
+  if (is_linux) {
+    # Suppress warnings from the Chromium Clang plugin (bugs.webrtc.org/163).
+    configs -= [ "//build/config/clang:find_bad_constructs" ]
+  }
+}
+
+static_library("zslib-eventing-tool") {
+
+  configs += [ ":zslib_eventing_config" ]
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs -= [ "//build/config/compiler:no_rtti" ]
+
+  if (!is_win) {
+    configs -= [ "//build/config/gcc:no_exceptions" ]
+  }
+
+  sources = zslib_eventing_tool_sources
+
+  defines = [
+    "_LIB",
+  ]
+
+  if (is_linux) {
+    # Suppress warnings from the Chromium Clang plugin (bugs.webrtc.org/163).
+    configs -= [ "//build/config/clang:find_bad_constructs" ]
+  }
+}

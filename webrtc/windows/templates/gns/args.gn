@@ -1,0 +1,13 @@
+# Build arguments go here.
+# See "gn args <out_dir> --list" for available build arguments.
+
+target_os="-target_os-"
+target_cpu="-target_cpu-"
+is_debug=-is_debug-
+rtc_use_h264=true 
+ffmpeg_branding="Chrome" 
+use_openh264=true 
+rtc_include_tests=false 
+libyuv_include_tests=false 
+build_libsrtp_tests=false 
+rtc_initialize_ffmpeg=true

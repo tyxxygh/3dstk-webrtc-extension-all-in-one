@@ -1,0 +1,7 @@
+# Build arguments go here.
+# See "gn args <out_dir> --list" for available build arguments.
+
+target_os="-target_os-"
+target_cpu="-target_cpu-"
+is_debug=-is_debug-
+rtc_include_tests=false

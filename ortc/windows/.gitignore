@@ -1,0 +1,27 @@
+[Dd]ebug/
+[Oo]bj/
+*.opensdf
+*.opendb
+*.sdf
+*.suo
+*.user
+project.lock.json
+[Rr]elease/
+projects/ipch
+projects/samples/ortc-standup/**/Generated Files
+projects/ortc-lib-sdk-win.vs2015.VC.opendb
+projects/ortc-lib-sdk-win.vs2015.VC.db
+projects/packages
+Build/
+nuget/package
+nuget/Output
+nuget/Org.Ortc.version
+NugetOutput/
+test/
+*.db
+ipch/
+*.lock.json
+*.vcxproj.user
+.vs/
+eventing/
+packages/

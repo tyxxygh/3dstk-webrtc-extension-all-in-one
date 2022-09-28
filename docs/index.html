@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>ORTC Lib</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>ORTC Lib</h1>
+        <h2></h2>
+        <a href="https://github.com/ortclib/ortclib-sdk" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a id="welcome-to-ortclib" class="anchor" href="#welcome-to-ortclib" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to ORTC Lib.</h2>
+
+<p>ORTC Lib is an open source library for <a href="https://en.wikipedia.org/wiki/Universal_Windows_Platform">UWP</a>, <a href="https://en.wikipedia.org/wiki/IOS">iOS</a>, and <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a> for building RTC (Real-Time Communication) applications compatible with other <a href="https://webrtc.org/">WebRTC</a> and <a href="https://ortc.org/">ORTC</a> browsers (or other on-the-wire compatible technologies).</p>
+
+<h2>
+<a id="optimized-mobile" class="anchor" href="#optimized-mobile" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Optimized for Mobile</h2>
+
+<p>ORTC Lib has been designed specifically with mobile applications in mind. The engine is optimized for mobile networks and firewalls, power consumption, CPU, media handling, backgrounding, and logging and statistics.</p>
+
+<h2>
+<a id="webrtc-adapter" class="anchor" href="#webrtc-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WebRTC 1.0 API Adapter / Shim</h2>
+
+<p>ORTC Lib has a built-in adapter API exposing the standard <a href="https://www.w3.org/TR/webrtc/">WebRTC 1.0 API</a> while using the ORTC Lib core engine. This allows developers to continue to use the current WebRTC 1.0 API while graduling adapting code to take advantage of all the advanced <a href="http://draft.ortc.org">ORTC API</a> capabilities and features.</p>
+
+<h2>
+<a id="key-features" class="anchor" href="#key-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Features</h2>
+
+<div class="columns">
+<div class="keeptogether">
+<b>Mobile-optimized ICE stack</b>
+<ul>
+  <li>Aggressive and regular nomination</li>
+  <li>Continuous nomination</li>
+  <li>Extended ICE gather options</li>
+  <li>Controllable ICE candidate search order</li>
+  <li>IPv6 optimizations</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Advanced Media controls &amp; support</b>
+<ul>
+  <li>Granular control of bandwidth usage</li>
+  <li>Simulcast support</li>
+  <li>Scalable Video Coding (SVC) ready*</li>
+  <li>Start, stop and change media sources directly</li>
+  <li>Many audio &amp; video codecs</li>
+  <li>Multiple Cipher Suites (SDES, DTLS)</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Extensive Native Platform support</b>
+<ul>
+  <li>iOS, Android, Windows, Mac</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Intuitive Object API’s</b>
+<ul>
+  <li>Fully ORTC 1.0 complaint</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Improved network performance</b>
+<ul>
+  <li>Faster setup times</li>
+  <li>Quicker network handovers for near-seamless handoffs/roaming</li>
+  <li>Control bandwidth vs. quality/performance tradeoffs</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Better native/mobile support</b>
+<ul>
+  <li>Optimize mobile application network &amp; battery usage</li>
+  <li>Support embedded/IoT devices*</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Application-optimized session establishment</b>
+<ul>
+  <li>Unidirectional stream support for broadcast applications</li>
+  <li>Forking/twining for recording</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Easier development</b>
+<ul>
+  <li>Intuitive Object API’s without complex SDP parsing &amp; munging</li>
+  <li>Optimized for your specific application without forking the stack</li>
+  <li>Popular native development languages supported</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Future-proof implementation</b>
+<ul>
+  <li>WebRTC-NV/2.0 is based on ORTC</li>
+  <li>More easily incorporate new technologies like SVC*</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Microsoft friendly</b>
+<ul>
+  <li>Works with Windows 10 Edge and Windows UWP</li>
+</ul>
+</div>
+
+</div>
+
+<h2>
+<a id="technical-specs" class="anchor" href="#technical-specs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technical Specs</h2>
+
+<div class="columns">
+<div class="keeptogether">
+<b>Supported environments</b>
+<ul>
+  <li>UWP</li>
+  <li>iOS*</li>
+  <li>Mac*</li>
+  <li>Android*</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Supported languages</b>
+<ul>
+  <li>C#</li>
+  <li>C++</li>
+  <li>Swift / Objective-C*</li>
+  <li>Java*</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Audio codecs &amp; capabilities</b>
+<ul>
+  <li>Opus</li>
+  <li>G.711</li>
+  <li>G722</li>
+  <li>Isac*</li>
+  <li>CN</li>
+  <li>DTMF</li>
+  <li>RED</li>
+  <li>RTX</li>
+  <li>FEC</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Video codecs &amp; capabilities</b>
+<ul>
+  <li>VP8</li>
+  <li>VP9*</li>
+  <li>H.264</li>
+  <li>RED</li>
+  <li>RTX</li>
+  <li>ULPFEC</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Simulcast support</b>
+</div>
+
+<div class="keeptogether">
+<b>Forking support</b>
+</div>
+
+<div class="keeptogether">
+<b>ICE</b>
+<ul>
+  <li>Aggressive and regular nomination</li>
+  <li>Continuous nomination</li>
+  <li>Extended ICE gather options</li>
+  <li>Controllable ICE candidate search order (faster setup)</li>
+  <li>ICE-lite compatible</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>IPv6 support</b>
+</div>
+
+<div class="keeptogether">
+<b>SVC*</b>
+</div>
+
+<div class="keeptogether">
+<b>Removed Chrome dependencies</b>
+<ul>
+  <li>WebRTC renderer</li>
+  <li>JSEP/SDP</li>
+  <li>PeerConnection</li>
+  <li>Libjingle</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Security</b>
+<ul>
+  <li>OpenSSL</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>NAT Traversal</b>
+<ul>
+  <li>Custom ICE/STUN/TURN implementation</li>
+  <li>(RFC Standard)</li>
+  <li>IPv6</li>
+  <li>Extended support for Trickle ICE</li>
+  <li>Extended support for Continuous Gathering Mode</li>
+  <li>Multiple Network Interfaces (multi-homed)</li>
+  <li>ICE Consent Freshness</li>
+  <li>MOBILITY-TICKET support</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Assembly Optimizations</b>
+<ul>
+  <li>YUV conversion</li>
+  <li>...and too much more to list here</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>DNS</b>
+<ul>
+  <li>IDN (Internationalized Domain Names)</li>
+  <li>SRV</li>
+  <li>A / AAAA</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Mobile</b>
+<ul>
+  <li>Reduced energy consumption</li>
+  <li>Application Backgrounding</li>
+  <li>Reduced footprint</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Media</b>
+<ul>
+  <li>RTP / RTCP Multiplexing</li>
+  <li>A/V Multiplexing</li>
+  <li>Enhanced audio routing</li>
+  <li>Video rotation control</li>
+  <li>Facial recognition (iOS)*</li>
+</ul>
+</div>
+
+<div class="keeptogether">
+<b>Logging</b>
+<ul>
+  <li>Remote</li>
+  <li>Local</li>
+</ul>
+</div>
+
+</div>
+
+
+<h2>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h2>
+
+<p>Need help with ORTC Lib? Check out the official ORTC API <a href="http://draft.ortc.org/">documentation</a> or <a href="https://github.com/robin-raymond">contact the lead contributor</a> and I’ll help you sort it out.</p>
+
+<p><i>* Planned features</i></p>
+
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://www.nuget.org/packages/ORTC/" class="button">
+            <small>Download on</small>
+            NuGet
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ortclib/ortclib">ORTC Lib</a> is maintained by the <a href="https://openpeer.org/"><span style="white-space:nowrap;">Open Peer Foundation.</span></a>.</p>
+
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

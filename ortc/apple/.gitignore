@@ -1,0 +1,6 @@
+*.xccheckout
+xcuserdata
+/projects/xcode/webrtcWrappers/webrtcWrapper_mac/webrtcWrapper_mac.xcodeproj/project.pbxproj-e
+/projects/xcode/webrtcWrappers/webrtcWrapper_ios/webrtcWrapper_ios.xcodeproj/project.pbxproj-e
+ortc-lib-sdk.xcscmblueprint
+libs/

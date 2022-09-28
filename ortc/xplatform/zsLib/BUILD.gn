@@ -1,0 +1,72 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//ortc/zsLib-eventing/zslib_eventing_tool.gni")
+import("zslib_sources.gni")
+
+config("zslib_config") {
+    if  (is_win) {
+      cflags_cc = [ 
+        "/WX-",
+        "/wd4068",
+        "/wd4290",
+      ]
+      
+      if (!is_winuwp)
+      {
+        cflags_cc += ["/EHsc"]
+      }
+    } else {
+      cflags_cc = [ 
+        "-std=c++11",
+        "-g",
+        "-Wall",
+      ]
+      if  (is_linux) {
+        cflags_cc += [
+          "-nostdinc++",
+        ]
+      }
+    }
+  
+    include_dirs = [ 
+      ".",
+      "zsLib/extras",
+    ]
+  }
+
+static_library("zslib") {
+
+  configs += [ ":zslib_config" ]
+  configs -= [ "//build/config/compiler:chromium_code" ]
+  configs -= [ "//build/config/compiler:no_rtti" ]
+
+  sources = zslib_sources
+
+  if (!is_win) {
+    configs -= [ "//build/config/gcc:no_exceptions" ]
+  }
+
+  defines = [
+    "_LIB",
+  ]
+
+  deps = [
+    ":zslib_events",
+  ]
+
+  if (is_linux) {
+    # Suppress warnings from the Chromium Clang plugin (bugs.webrtc.org/163).
+    configs -= [ "//build/config/clang:find_bad_constructs" ]
+  }
+}
+
+
+compile_single_event_macro("zslib_events") {
+  
+  sources = [
+    "zsLib/cpp/zsLib.events.json",
+  ]
+    
+}

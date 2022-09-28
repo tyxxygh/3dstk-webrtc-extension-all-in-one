@@ -1,0 +1,187 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		52D842E31FE59F4200470669 /* ortclib-ios-debug */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 52D842E41FE59F4200470669 /* Build configuration list for PBXAggregateTarget "ortclib-ios-debug" */;
+			buildPhases = (
+				52D842EC1FE5B52B00470669 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "ortclib-ios-debug";
+			productName = "ortclib-ios";
+		};
+		52D842E71FE59F7800470669 /* ortclib-ios-release */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 52D842E81FE59F7800470669 /* Build configuration list for PBXAggregateTarget "ortclib-ios-release" */;
+			buildPhases = (
+				52D842EB1FE59F9400470669 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "ortclib-ios-release";
+			productName = "ortclib-ios-release";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXGroup section */
+		52D842DC1FE59F2B00470669 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		52D842DD1FE59F2B00470669 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				TargetAttributes = {
+					52D842E31FE59F4200470669 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					52D842E71FE59F7800470669 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 52D842E01FE59F2B00470669 /* Build configuration list for PBXProject "ortclib.builder" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 52D842DC1FE59F2B00470669;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52D842E31FE59F4200470669 /* ortclib-ios-debug */,
+				52D842E71FE59F7800470669 /* ortclib-ios-release */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		52D842EB1FE59F9400470669 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo note: \"Compile ortc\"\npushd ../../../../../\nexec env \"PATH=../../../../../bin:../../../../../../webrtc/xplatform/depot_tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin\" ./bin/buildTarget.sh -target ortc -configuration release -platform ios -merge -logLevel 2\npopd\nexit 1";
+		};
+		52D842EC1FE5B52B00470669 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo note: \"Compile ortc\"\npushd ../../../../../\nexec env \"PATH=../../../../../bin:../../../../../../webrtc/xplatform/depot_tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin\" ./bin/buildTarget.sh -target ortc -configuration debug -platform ios -merge -logLevel 2\npopd\nexit 1";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		52D842E11FE59F2B00470669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		52D842E21FE59F2B00470669 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		52D842E51FE59F4200470669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QE9E5R8GUP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		52D842E61FE59F4200470669 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QE9E5R8GUP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		52D842E91FE59F7800470669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QE9E5R8GUP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		52D842EA1FE59F7800470669 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QE9E5R8GUP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52D842E01FE59F2B00470669 /* Build configuration list for PBXProject "ortclib.builder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D842E11FE59F2B00470669 /* Debug */,
+				52D842E21FE59F2B00470669 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D842E41FE59F4200470669 /* Build configuration list for PBXAggregateTarget "ortclib-ios-debug" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D842E51FE59F4200470669 /* Debug */,
+				52D842E61FE59F4200470669 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D842E81FE59F7800470669 /* Build configuration list for PBXAggregateTarget "ortclib-ios-release" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D842E91FE59F7800470669 /* Debug */,
+				52D842EA1FE59F7800470669 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52D842DD1FE59F2B00470669 /* Project object */;
+}

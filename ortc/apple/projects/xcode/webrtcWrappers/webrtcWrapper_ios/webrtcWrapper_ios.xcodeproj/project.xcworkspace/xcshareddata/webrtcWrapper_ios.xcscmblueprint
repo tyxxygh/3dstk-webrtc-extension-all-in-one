@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C487CAD9BD6A4D04DA1AE1C5FBB4276931C05CE2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C487CAD9BD6A4D04DA1AE1C5FBB4276931C05CE2" : 9223372036854775807,
+    "24FC35C9B838785A8E3BA9B98D9A4D5C85212DD0" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CAE58A73-9BE8-4660-990A-A4B75344C13E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C487CAD9BD6A4D04DA1AE1C5FBB4276931C05CE2" : "apple\/",
+    "24FC35C9B838785A8E3BA9B98D9A4D5C85212DD0" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "webrtcWrapper_ios",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "projects\/xcode\/webrtcWrappers\/webrtcWrapper_ios\/webrtcWrapper_ios.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ortclib\/ortclib-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "24FC35C9B838785A8E3BA9B98D9A4D5C85212DD0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ortclib\/ortclib-apple.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C487CAD9BD6A4D04DA1AE1C5FBB4276931C05CE2"
+    }
+  ]
+}
