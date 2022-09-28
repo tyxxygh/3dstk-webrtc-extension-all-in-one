@@ -1,0 +1,8 @@
+*.xccheckout
+xcuserdata
+/ninja
+ninja.exe
+nuget.exe
+zsLib.Eventing.Tool.Compiler.exe
+/eventing
+depot_tools/
