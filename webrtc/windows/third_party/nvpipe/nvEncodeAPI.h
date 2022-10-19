@@ -555,6 +555,12 @@ typedef enum _NVENCSTATUS
      */
     NV_ENC_ERR_RESOURCE_NOT_MAPPED,
 
+    /**
+     * This indicates that the client session number exceeds max limitation, and can not 
+     * open any more. --add by tyxxy.
+     */
+    NV_ENC_ERR_EXCEED_MAX_SESSION_LIMITATION,
+
 } NVENCSTATUS;
 
 /**

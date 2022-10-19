@@ -291,10 +291,10 @@ namespace webrtc {
 			encode_nvpipe = (nvpipe_encode)GetProcAddress(hGetProcIDDLL, "nvpipe_encode");
 			reconfigure_nvpipe = (nvpipe_bitrate)GetProcAddress(hGetProcIDDLL, "nvpipe_bitrate");
 #else
-			m_hProcHandle = dlopen("libnvpipe.so",RTLD_LAZY);
+			m_hProcHandle = dlopen("./libnvpipe.so",RTLD_LAZY);
 			if(m_hProcHandle == nullptr)
 			{
-				LOG(LS_ERROR) << "Failed to load libnvpipe.so";
+				LOG(LS_ERROR) << "loading libnvpipe.so failed. dlerror=" << dlerror() << ".";
 				ReportError();
 				return WEBRTC_VIDEO_CODEC_ERROR;
 			}
@@ -668,16 +668,55 @@ namespace webrtc {
 		}
 		return WEBRTC_VIDEO_CODEC_OK;
 	}
+	
+	#ifdef _WIN32
+		NVENCSTATUS TryToOpenNVENCSession(HINSTANCE handle)
+	#else
+		NVENCSTATUS TryToOpenNVENCSession(void *handle)
+	#endif
+	{
+		//try to make a session test
+		nvpipe_create_encoder create_nvpipe_encoder;
+		nvpipe_destroy destroy_nvpipe_encoder;
+	#ifdef _WIN32
+		create_nvpipe_encoder = (nvpipe_create_encoder)GetProcAddress(handle, "nvpipe_create_encoder");
+		destroy_nvpipe_encoder = (nvpipe_destroy)GetProcAddress(handle, "nvpipe_destroy");
+	#else
+		create_nvpipe_encoder = (nvpipe_create_encoder)dlsym(handle, "nvpipe_create_encoder");
+		destroy_nvpipe_encoder = (nvpipe_destroy)dlsym(handle, "nvpipe_destroy");
+	#endif
+		if (!create_nvpipe_encoder || !destroy_nvpipe_encoder)
+		{
+			// Failed to load Nvpipe functions.
+			LOG(LS_ERROR) << "Failed to load Nvpipe functions";
+			//ReportError();
+			return NV_ENC_ERR_GENERIC;
+		}
 
+		//void* tmpSession  = create_nvpipe_encoder(NVPIPE_H264_NV, m_encodeConfig.bitrate, m_encodeConfig.fps, m_encodeConfig.idrPeriod, m_encodeConfig.intraRefreshPeriod, m_encodeConfig.intraRefreshEnableFlag);
+		nvpipe* tmpSession  = create_nvpipe_encoder(NVPIPE_H264_NV, 512, 30, 30, 30, true);
+		if (tmpSession != nullptr)
+		{
+			destroy_nvpipe_encoder(tmpSession);
+			return NV_ENC_SUCCESS;
+		}
+		else
+		{
+			return NV_ENC_ERR_EXCEED_MAX_SESSION_LIMITATION;
+		}
+	}
 
 	NVENCSTATUS H264EncoderImpl::CheckDeviceNVENCCapability()
 	{
 		#ifdef _WIN32
-		auto nvpipe = LoadLibrary(L"Nvpipe.dll");
+		auto handle = LoadLibrary(L"Nvpipe.dll");
 		#else
-		auto nvpipe = dlopen("libnvpipe.so", RTLD_LAZY);
+		auto handle = dlopen("./libnvpipe.so", RTLD_LAZY);
+		if (handle == nullptr) {
+			LOG(LS_ERROR) << "loading libnvpipe.so failed. dlerror=" << dlerror() << ".";
+		}
 		#endif
-		if (nvpipe == nullptr) {
+		if (handle == nullptr) {
 			return NV_ENC_ERR_NO_ENCODE_DEVICE;
 		}
 
@@ -711,8 +750,9 @@ namespace webrtc {
 		{
 			return NV_ENC_ERR_NO_ENCODE_DEVICE;
 		}
-
-		return NV_ENC_SUCCESS;
+		
+		return TryToOpenNVENCSession(handle);
+		//return NV_ENC_SUCCESS;
 	}
 
 	const char* H264EncoderImpl::ImplementationName() const {
